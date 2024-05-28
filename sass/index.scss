@@ -1,0 +1,160 @@
+@import 'colors';
+
+.chatbotmaincontainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    .chatbotheaderblock{
+        padding: 10px;
+        margin-bottom: 5px;
+        .modelNamesheader{
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            float: left;
+            display: flex;
+            flex-direction: row ;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            color: $text-secondary;
+            transition-duration: 0.2s;
+            span{
+                color: $down-arrow-color;
+                align-self: flex-end;
+                font-weight: 300;
+            }
+            &:hover{
+                background-color: $hover-color;
+            }
+        }
+    }
+    .chatbotbodyblock{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 25%;
+        .usermessageblock{
+            transition-duration: 0.2s;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            align-items: center;
+            .usermessageedit{
+                transition-duration: 0.2s;
+                width: 2.25rem;
+                height: 2.25rem;
+                color: $text-secondary;
+                border-radius: 9999px;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                margin: 0 8px 0 0;
+                svg{
+                    stroke-width: 1.5;
+                    flex-shrink: 0;
+                    height: 18px;
+                    width: 18px;
+                }
+                &:hover{
+                    background-color: $editiconcolor;
+                }
+            }
+            .usagermessage{
+                padding-bottom: .625rem;
+                padding-top: .625rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+                background-color: rgba(244, 244, 244, 1);
+                border-radius: 1.5rem;
+                max-width: 70%;
+                word-wrap: break-word;
+            }
+
+
+            &:hover{
+                .usermessageedit{
+                    display: flex;
+                }
+            }
+
+        }
+    }
+    .chatbotfooterblock{
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .chatbotfooterinputfieldblock{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            .inputareacustom{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 10px;
+                background-color: rgba(244, 244, 244);
+                border-radius: 36px;
+                width: 50%;
+                .inputareacustomattachmenticon{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    span{
+                        cursor: pointer;
+                        width: 2rem;
+                        border-radius: 99999px;
+                        width: 2rem;
+                    }
+                }
+                .inputareacustomtextarea{
+                    flex-grow: 1;
+                    textarea{
+                        height: 40px;
+                        width: 100%;
+                        color: $textarea-color;
+                        max-height: 25dvh;
+                        padding: 0;
+                        resize: none;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        font-size: 1rem;
+                        padding: .5rem .75rem;
+                        line-height: 1.5rem;
+                    }
+                }
+                .inputareacustomsendbtn{
+                    span{
+                        color: rgba(244, 244, 244,1);;
+                        background-color: rgba(215, 215, 215,1);
+                        border-radius: 9999px;
+                        width: 2rem;
+                        height: 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                }
+
+            }
+        }
+        .chatbotfooterdisclaimer{
+            font-size: 0.75rem;
+            color: $text-secondary;
+        }
+    }
+}

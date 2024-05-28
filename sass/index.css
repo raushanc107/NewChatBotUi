@@ -1,0 +1,149 @@
+.chatbotmaincontainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.chatbotmaincontainer .chatbotheaderblock {
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.chatbotmaincontainer .chatbotheaderblock .modelNamesheader {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #7D7D63;
+  transition-duration: 0.2s;
+}
+.chatbotmaincontainer .chatbotheaderblock .modelNamesheader span {
+  color: #b4b4b4;
+  align-self: flex-end;
+  font-weight: 300;
+}
+.chatbotmaincontainer .chatbotheaderblock .modelNamesheader:hover {
+  background-color: #f9f9f9;
+}
+.chatbotmaincontainer .chatbotbodyblock {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25%;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock {
+  transition-duration: 0.2s;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock .usermessageedit {
+  transition-duration: 0.2s;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #7D7D63;
+  border-radius: 9999px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 8px 0 0;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock .usermessageedit svg {
+  stroke-width: 1.5;
+  flex-shrink: 0;
+  height: 18px;
+  width: 18px;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock .usermessageedit:hover {
+  background-color: #ececec;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock .usagermessage {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: rgb(244, 244, 244);
+  border-radius: 1.5rem;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+.chatbotmaincontainer .chatbotbodyblock .usermessageblock:hover .usermessageedit {
+  display: flex;
+}
+.chatbotmaincontainer .chatbotfooterblock {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 36px;
+  width: 50%;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom .inputareacustomattachmenticon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom .inputareacustomattachmenticon span {
+  cursor: pointer;
+  width: 2rem;
+  border-radius: 99999px;
+  width: 2rem;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom .inputareacustomtextarea {
+  flex-grow: 1;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom .inputareacustomtextarea textarea {
+  height: 40px;
+  width: 100%;
+  color: #0d0d0d;
+  max-height: 25dvh;
+  padding: 0;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.5rem;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterinputfieldblock .inputareacustom .inputareacustomsendbtn span {
+  color: rgb(244, 244, 244);
+  background-color: rgb(215, 215, 215);
+  border-radius: 9999px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.chatbotmaincontainer .chatbotfooterblock .chatbotfooterdisclaimer {
+  font-size: 0.75rem;
+  color: #7D7D63;
+}/*# sourceMappingURL=index.css.map */
