@@ -5,6 +5,7 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
+    font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica, Apple Color Emoji, Arial, Segoe UI Emoji, Segoe UI Symbol;
     .chatbotheaderblock{
         padding: 10px;
         margin-bottom: 5px;
@@ -44,6 +45,7 @@
             flex-direction: row;
             justify-content: end;
             align-items: center;
+            margin: 5px 0;
             .usermessageedit{
                 transition-duration: 0.2s;
                 width: 2.25rem;
@@ -83,6 +85,39 @@
                 }
             }
 
+        }
+
+        .chatbotassistantresponse{
+            width: 100%;
+            transition-duration: 0.2s;
+            display: flex;
+            flex-direction: row;
+            margin: 5px 0;
+            .assistantlogo{
+                div{
+                    color: $text-primary;
+                    padding: .25rem;
+                    border-radius:9999px;
+                    height: 2rem;
+                    width: 2rem;
+                    outline: solid 1px #ececec;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    svg{
+                        flex-shrink: 0;
+                        height: 18px;
+                        width: 18px;
+                        stroke-width: 1.5;
+                    }
+                }
+            }
+            .assistantactualanswer{
+                padding:0.3rem 0 0 2rem;
+                word-wrap: break-word;
+                flex-grow: 1;
+                font-size: 1rem;
+            }
         }
     }
     .chatbotfooterblock{
