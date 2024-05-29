@@ -108,39 +108,75 @@
             }
 
         }
-
-        .chatbotassistantresponse{
-            width: 100%;
-            transition-duration: 0.2s;
+        .chatbotassistantresponsebodyblock{
             display: flex;
-            flex-direction: row;
-            margin: 5px 0;
-            .assistantlogo{
-                div{
-                    color: $text-primary;
-                    padding: .25rem;
-                    border-radius:9999px;
-                    height: 2rem;
-                    width: 2rem;
-                    outline: solid 1px #ececec;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    svg{
-                        flex-shrink: 0;
-                        height: 18px;
-                        width: 18px;
-                        stroke-width: 1.5;
+            flex-direction: column;
+            .chatbotassistantresponse{
+                width: 100%;
+                transition-duration: 0.2s;
+                display: flex;
+                flex-direction: row;
+                margin: 5px 0;
+                .assistantlogo{
+                    div{
+                        color: $text-primary;
+                        padding: .25rem;
+                        border-radius:9999px;
+                        height: 2rem;
+                        width: 2rem;
+                        outline: solid 1px #ececec;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        svg{
+                            flex-shrink: 0;
+                            height: 18px;
+                            width: 18px;
+                            stroke-width: 1.5;
+                        }
+                    }
+                }
+                .assistantactualanswer{
+                    padding:0.3rem 0 0 1rem;
+                    word-wrap: break-word;
+                    flex-grow: 1;
+                    font-size: 1rem;
+                }
+                
+            }
+            .chatbotresponseactions{
+                padding-left: 50px;
+                display: flex;
+                flex-direction: row;
+                gap: 3px;
+                color: $iconcolors;
+                margin-top: 5px;
+                transition-duration: 0.2s;
+                cursor: pointer;
+                span{
+                    border-radius: 0.5rem;
+                    padding: 5px;
+                    font-size: 22px;
+                    &:hover{
+                        background-color: $hover-color;
+                    }
+                }
+                
+            }
+            &:not(:last-child){
+                .chatbotresponseactions{
+                    opacity: 0;
+
+                }
+                &:hover{
+                    .chatbotresponseactions{
+                        opacity: 1;
+    
                     }
                 }
             }
-            .assistantactualanswer{
-                padding:0.3rem 0 0 1rem;
-                word-wrap: break-word;
-                flex-grow: 1;
-                font-size: 1rem;
-            }
         }
+ 
     }
     .chatbotfooterblock{
         padding: 5px;

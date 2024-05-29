@@ -123,6 +123,7 @@ function createQuestionBlock(question){
 
 function generateAnswerBlockEmpty(){
             const uid=getIdofResponse();
+            const $chatbotresponsemainbodyblock=$('<div>',{class:'chatbotassistantresponsebodyblock',id:'chatbotassistantresponsebodyblock_'+uid});
             const $chatbotResponse = $('<div>', { class: 'chatbotassistantresponse',id:'chatbotassistantresponse_'+uid });
             const $assistantLogo = $('<div>', { class: 'assistantlogo',id:'assistantlogo_'+uid });
             const $spinner = $('<div>',{id:'spinnerandlogocontainer_'+uid}).append($('<p>', {
@@ -137,7 +138,8 @@ function generateAnswerBlockEmpty(){
             const $assistantAnswer = $('<div>', { class: 'assistantactualanswer',id:'assistantactualanswer_'+uid });
                 // .append($('<p>').text("Sure! Here's a piece discussing the impact of technology on society:"));
             $chatbotResponse.append($assistantLogo).append($assistantAnswer);
-            $('#chatbotbodyblock').append($chatbotResponse);
+            $chatbotresponsemainbodyblock.append($chatbotResponse);
+            $('#chatbotbodyblock').append($chatbotresponsemainbodyblock);
             return uid;
 }
 
@@ -154,9 +156,22 @@ function completetheresponse(id){
                         width: 18px;
                     ">`;
     $('#spinnerandlogocontainer_'+id).html(compicon);
+    $('#chatbotassistantresponsebodyblock_'+id).append(getActionIconofresponse());
 }
 
+function getActionIconofresponse(){
+    var div = $('<div>', { class: 'chatbotresponseactions' });
 
+    var icons = ['volume_up', 'content_copy', 'autorenew', 'thumb_down'];
+    
+    icons.forEach(function(icon) {
+        var span = $('<span>', { class: 'material-symbols-outlined' });
+        span.text(icon);
+        div.append(span);
+    });
+
+    return div;
+}
 
 function getIdofResponse(){
     const numberOfChildren = $('#chatbotbodyblock').children().length+1;

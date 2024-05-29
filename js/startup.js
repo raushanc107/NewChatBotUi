@@ -2,6 +2,7 @@ $(document).ready(function() {
     textareaactiveinactive();
     scrolltobottom();
     textareaenteredpressed();
+    
 });
 
 
