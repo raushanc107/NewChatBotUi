@@ -1,4 +1,78 @@
+function SensuserMessagetoAssistant(){
+    const question=$('#chatbotinputtextareafield').val();
+    $('#chatbotinputtextareafield').val('');
+    sendbuttonactiveinactive();
+    if(question.trim()==''){
+        return;
+    }
+
+    createQuestionBlock(question);
+
+    setTimeout(() => {
+        let uid=generateAnswerBlockEmpty();
+        generatestream(question,uid);
+    }, 500);
+    
+
+}
+
+
+async function generatestream(question,span){
+    try{
+        const response=await fetch("https://csopenaiservice.openai.azure.com/openai/deployments/CSAsst/chat/completions?api-version=2023-05-15",{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "api-key":"ed40bd2c729d4cef822b177f1df7745a"
+            },
+            body:JSON.stringify({
+                "messages":[{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content":question}],
+                "stream":true
+             }),
+            });
+            
+            const reader=response.body.getReader();
+    const decoder=new TextDecoder("utf-8"); 
+    while(true){
+        const chunk=await reader.read();
+        const {done,value}=chunk;
+        const decodedchunk=decoder.decode(value);
+        const lines=decodedchunk.split("\n");
+        const parsedLines=lines.map((line)=>
+            line.replace(/^data:/,"").trim()
+        ).filter(line=>line!==""&& line!=="[DONE]").map((line)=>
+            JSON.parse(line)
+        );
+        for(const parsedLine of parsedLines){
+            const {choices}=parsedLine;
+            const {delta}=choices[0];
+            const {content}=delta;
+            if(content){
+                functionAddResponse(content,span);
+            }
+        }
+    
+    
+    
+    
+        if(done){
+            break;
+        }
+    
+    }
+
+    completetheresponse(span);
+
+
+    
+    }catch(err){
+        console.warn(err);
+    }
+    }
+
+
 function createQuestionBlock(question){
+    question=question.replace(/\n/g, "<br>");
     const $userMessageBlock = $('<div>', { class: 'usermessageblock' });
 
     // Create the user message edit div
@@ -32,7 +106,7 @@ function createQuestionBlock(question){
     const $userMessage = $('<div>', { class: 'usagermessage' });
 
     // Create the message by user div
-    const $messageByUser = $('<div>', { class: 'messagebyuser' }).text('Hi');
+    const $messageByUser = $('<div>', { class: 'messagebyuser' }).html(question);
 
     // Append the message by user div to the user message div
     $userMessage.append($messageByUser);
@@ -44,4 +118,47 @@ function createQuestionBlock(question){
     // Append the main container to the body (or any other desired parent element)
     $('#chatbotbodyblock').append($userMessageBlock);
 
+}
+
+
+function generateAnswerBlockEmpty(){
+            const uid=getIdofResponse();
+            const $chatbotResponse = $('<div>', { class: 'chatbotassistantresponse',id:'chatbotassistantresponse_'+uid });
+            const $assistantLogo = $('<div>', { class: 'assistantlogo',id:'assistantlogo_'+uid });
+            const $spinner = $('<div>',{id:'spinnerandlogocontainer_'+uid}).append($('<p>', {
+                class: 'spinner-border text-secondary spinner-border-sm',
+                css: {
+                    margin: '0',
+                    width: '1.5rem',
+                    height: '1.5rem'
+                }
+            }));
+            $assistantLogo.append($spinner);
+            const $assistantAnswer = $('<div>', { class: 'assistantactualanswer',id:'assistantactualanswer_'+uid });
+                // .append($('<p>').text("Sure! Here's a piece discussing the impact of technology on society:"));
+            $chatbotResponse.append($assistantLogo).append($assistantAnswer);
+            $('#chatbotbodyblock').append($chatbotResponse);
+            return uid;
+}
+
+
+function functionAddResponse(response,id){
+    debugger;
+    const sp=$('<span>').text(response);
+    $('#assistantactualanswer_'+id).append(sp);
+}
+
+function completetheresponse(id){
+    const compicon=`<img src="images/openaiicon.png" style="
+                        height: 18px;
+                        width: 18px;
+                    ">`;
+    $('#spinnerandlogocontainer_'+id).html(compicon);
+}
+
+
+
+function getIdofResponse(){
+    const numberOfChildren = $('#chatbotbodyblock').children().length+1;
+    return 'response_'+numberOfChildren;
 }
