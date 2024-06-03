@@ -58,8 +58,9 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        padding: 10px 25%;
+        padding: 10px 18%;
         overflow: auto;
+
         .usermessageblock{
             transition-duration: 0.2s;
             width: 100%;
@@ -199,7 +200,7 @@
                 padding: 5px 10px;
                 background-color: rgba(244, 244, 244);
                 border-radius: 36px;
-                width: 50%;
+                width: 65%;
                 .inputareacustomattachmenticon{
                     display: flex;
                     justify-content: center;
@@ -256,6 +257,105 @@
         .chatbotfooterdisclaimer{
             font-size: 0.75rem;
             color: $text-secondary;
+        }
+    }
+}
+
+
+
+
+.chatbotmaincontainer.dark{
+    background-color: rgb(33, 33, 33);
+  .chatbotheaderblock{
+        .modelNamesheader{
+            color: $down-arrow-color;
+            span{
+                color: $down-arrow-color;
+            }
+            &:hover{
+                background-color: $darkbackgroundcolor2
+            }
+        }
+    }
+    .chatbotbodyblock{
+        .usermessageblock{
+            .usermessageedit{
+                color: $down-arrow-color;
+                &:hover{
+                    background-color: $darkbackgroundcolor3;
+                }
+            }
+            .usagermessage{
+                background-color: $darkbackgroundcolor2;
+                color: $editiconcolor;
+            }
+
+        }
+        .chatbotassistantresponsebodyblock{
+            .chatbotassistantresponse{
+                .assistantlogo{
+                    div{
+                        color: $text-primary;
+                        outline: solid 1px $darkbackgroundcolor3;
+                        svg{
+                            flex-shrink: 0;
+                            height: 18px;
+                            width: 18px;
+                            stroke-width: 1.5;
+                        }
+                    }
+                }
+                .assistantactualanswer{
+                    color: $editiconcolor;
+                }
+                
+            }
+            .chatbotresponseactions{
+                color: $down-arrow-color;
+                span{
+                    &:hover{
+                        background-color: $darkbackgroundcolor2
+                    }
+                }
+                
+            }
+        }
+ 
+    }
+    .chatbotfooterblock{
+        .chatbotfooterinputfieldblock{
+            
+            .inputareacustom{
+                background-color: $darkbackgroundcolor2;
+                .inputareacustomattachmenticon{
+                    span{
+                        color: rgba(255,255,255,1);
+                    }
+                }
+                .inputareacustomtextarea{
+                    textarea{
+                        color: rgb(236, 236, 236);
+                    }
+                }
+                .inputareacustomsendbtn{
+                    span{
+                        color: $darkbackgroundcolor2;
+                        background-color: $darkbackgroundcolor5;
+                        
+                        
+                    }
+                    span.active{
+                        color: $darkbackgroundcolor4;
+                        background-color: rgba(255, 255, 255,1);
+                       
+                    }
+                }
+
+            }
+        }
+        .chatbotfooterdisclaimer{
+            font-size: 0.75rem;
+            color: rgba(180,180,180);
         }
     }
 }

@@ -2,7 +2,7 @@ $(document).ready(function() {
     textareaactiveinactive();
     scrolltobottom();
     textareaenteredpressed();
-    
+    getchatfromlocalstorage();
 });
 
 
@@ -45,4 +45,24 @@ function textareaenteredpressed(){
             SensuserMessagetoAssistant() // Call your function here
         }
     });
+}
+
+function addchattolocalstorage() {
+    let texttoadd = document.getElementById('chatbotbodyblock').innerHTML;
+    localStorage.setItem("newchatbotchats", texttoadd);
+}
+
+function getchatfromlocalstorage() {
+    var myValue = localStorage.getItem("newchatbotchats");
+    if (myValue !== null && myValue != "null" && myValue.trim() != "") {
+        document.getElementById('chatbotbodyblock').innerHTML = myValue;
+    } else {
+        let uid=generateAnswerBlockEmpty();
+        functionAddResponseraw("Hi, How may i help you ?.", uid);
+        completetheresponse(uid);
+    }
+}
+
+function clearlocalstorage() {
+    localStorage.setItem("newchatbotchats", null);
 }

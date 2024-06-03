@@ -48,7 +48,7 @@ async function generatestream(question,span){
             const {delta}=choices[0];
             const {content}=delta;
             if(content){
-                functionAddResponse(content,span);
+                functionAddResponseraw(content,span);
             }
         }
     
@@ -61,12 +61,18 @@ async function generatestream(question,span){
     
     }
 
-    completetheresponse(span);
 
+    completetheresponse(span);
+    scrolltobottom();
+            addchattolocalstorage();
 
     
     }catch(err){
         console.warn(err);
+        completetheresponse(span);
+            AlertFail('Internal Server Error');
+            scrolltobottom();
+            addchattolocalstorage();
     }
     }
 
@@ -81,8 +87,8 @@ function createQuestionBlock(question){
     // Create the SVG icon
     const $svgIcon = $('<svg>', {
         xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
+        width: '18',
+        height: '18',
         fill: 'none',
         viewBox: '0 0 24 24',
         class: 'icon-md'
@@ -117,7 +123,7 @@ function createQuestionBlock(question){
 
     // Append the main container to the body (or any other desired parent element)
     $('#chatbotbodyblock').append($userMessageBlock);
-
+    scrolltobottom();
 }
 
 
@@ -148,6 +154,12 @@ function functionAddResponse(response,id){
     debugger;
     const sp=$('<span>').text(response);
     $('#assistantactualanswer_'+id).append(sp);
+}
+function functionAddResponseraw(response, id) {
+    debugger;
+    response=response.replace(/\n/g, "<br>");
+    $('#assistantactualanswer_' + id).append(response);
+    
 }
 
 function completetheresponse(id){
